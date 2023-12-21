@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <HeaderSection />
-      <MainSection />;
+      <MainSection />
       <BottomSection />
     </>
   );

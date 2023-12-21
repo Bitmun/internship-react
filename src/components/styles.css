@@ -18,9 +18,11 @@ h1 {
   font-weight: bold;
 }
 
-nav {
+.navigation {
   display: none;
 }
+
+
 
 /* HEADER /////////////////////////////////////////////////// */
 
@@ -116,6 +118,57 @@ nav {
 
 .topnav {
   display: none;
+}
+
+
+.sidepanel-top {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: xx-large;
+  border-bottom: 1px solid white;
+}
+
+.is-closed {
+  display: none;
+  color: white
+}
+
+.is-opened {
+  display: block;
+  list-style-type: none;
+  color: #98afae;
+  font-size: 1.2rem;
+  padding: 0.2rem 0;
+}
+
+.sidepanel-top-is-clicked {
+  color: green;
+}
+
+.sidepanel-top-link {
+  display: block;
+  width: 100%;
+}
+
+.sidepanel-top-link::after {
+  border: solid #98afae;
+  border-width: 0 2px 2px 0;
+  content: " ";
+  display: block;
+  height: 15px;
+  position: absolute;
+  right: 15px;
+  top: 30px;
+  transform: rotate(225deg) translate(5px,15px) scale(-1);
+  transition: transform .2s ease-out;
+  width: 15px;
+}
+
+.sidepanel-opened {
+  height: 100%;
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px
 }
 
 /* MAIN /////////////////////////////////////////////////// */
@@ -238,23 +291,28 @@ nav {
     display: none;
   }
 
-  nav {
+  .navigation {
     text-align: center;
     display: block;
   }
 
-  nav ul {
+
+  .navigation-ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
+
+  .navigation-ul li {
+    list-style: none;
+  }
   
-  nav ul li {
+  .dropdown {
     display: inline-block;
     position: relative;
   }
   
-  nav ul li a {
+  .dropdown-link {
     font-weight: bold;
     display: block;
     padding: 10px;
@@ -263,7 +321,7 @@ nav {
     color: #333;
   }
 
-  nav ul li a::after {
+  .dropdown-link::after {
   content: "";
   position: absolute;
   top: calc(50% - 2px);
@@ -345,54 +403,4 @@ nav {
   font-size: xx-large;
   justify-content: center;
   align-items: center;
-}
-
-.sidepanel-top {
-  color: white;
-  margin-bottom: 1rem;
-  font-size: xx-large;
-  border-bottom: 1px solid white;
-}
-
-.is-closed {
-  display: none;
-  color: white
-}
-
-.is-opened {
-  display: block;
-  list-style-type: none;
-  color: #98afae;
-  font-size: 1.2rem;
-  padding: 0.2rem 0;
-}
-
-.sidepanel-top-is-clicked {
-  color: green;
-}
-
-.sidepanel-top-link {
-  display: block;
-  width: 100%;
-}
-
-.sidepanel-top-link::after {
-  border: solid #98afae;
-  border-width: 0 2px 2px 0;
-  content: " ";
-  display: block;
-  height: 15px;
-  position: absolute;
-  right: 15px;
-  top: 30px;
-  transform: rotate(225deg) translate(5px,15px) scale(-1);
-  transition: transform .2s ease-out;
-  width: 15px;
-}
-
-.sidepanel-opened {
-  height: 100%;
-  padding-top: 60px;
-  padding-left: 30px;
-  padding-right: 30px
 }

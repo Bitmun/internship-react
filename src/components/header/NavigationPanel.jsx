@@ -8,7 +8,9 @@ function NavigationPanel() {
       <ul className="navigation-ul" id="navigation-ul">
         {HEADER_ITEMS.map((item) => (
           <li className="dropdown">
-            <a href="###">{item.text}</a>
+            <a className="dropdown-link" href="###">
+              {item.text}
+            </a>
             <ul className="dropdown-menu">
               {item.submenu.map((el) => (
                 <li>
