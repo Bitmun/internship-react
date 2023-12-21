@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles.css";
+import PropTypes from "prop-types";
 
 function Block({ item }) {
   const { title, desc, img } = item;
@@ -21,6 +22,10 @@ function Block({ item }) {
 }
 
 Block.propTypes = {
-  item: Object.isRequired,
+  item: PropTypes.shape({
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    img: PropTypes.string,
+  }).isRequired,
 };
 export default Block;

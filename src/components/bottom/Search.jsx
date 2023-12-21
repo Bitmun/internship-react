@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles.css";
 
 function Search({ handleSearch }) {
@@ -18,7 +19,7 @@ function Search({ handleSearch }) {
 }
 
 Search.propTypes = {
-  handleSearch: Function.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default Search;

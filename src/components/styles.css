@@ -18,13 +18,13 @@ h1 {
   font-weight: bold;
 }
 
+
+/* HEADER /////////////////////////////////////////////////// */
+
 .navigation {
   display: none;
 }
 
-
-
-/* HEADER /////////////////////////////////////////////////// */
 
 .header-container {
   display: flex;
@@ -169,6 +169,16 @@ h1 {
   padding-top: 60px;
   padding-left: 30px;
   padding-right: 30px
+}
+
+.active {
+  color: green;
+  text-decoration: none;
+}
+
+.unactive {
+  color: white;
+  text-decoration: none;
 }
 
 /* MAIN /////////////////////////////////////////////////// */

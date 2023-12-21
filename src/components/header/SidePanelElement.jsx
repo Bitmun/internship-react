@@ -1,23 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 function SidePanelElement({ item }) {
-  const { text, submenu } = item;
-  const handleClick = () => {};
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleKeyDown = () => {};
+
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-    <li className="sidepanel-top" key={text} onClick={handleClick}>
-      <a href="###">{item.text}</a>
-      <ul className="is-closed">
-        {submenu.map((el) => (
-          <li>{el.submenu}</li>
+    <>
+      <div
+        role="button"
+        tabIndex="0"
+        className={`sidepanel-top ${isOpen ? "active" : "unactive"}`}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+      >
+        <a href="###" className={isOpen ? "active" : "unactive"}>
+          {item.text}
+        </a>
+      </div>
+      <ul className={`is-closed ${isOpen ? "is-opened" : ""}`}>
+        {item.submenu.map((el) => (
+          <li key={el}>{el}</li>
         ))}
       </ul>
-    </li>
+    </>
   );
 }
 
 SidePanelElement.propTypes = {
-  item: Object.isRequired,
+  item: PropTypes.shape({
+    text: PropTypes.string,
+    submenu: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 };
 
 export default SidePanelElement;
