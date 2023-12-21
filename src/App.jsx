@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./components/header/HeaderSection";
+import HeaderSection from "./components/header/HeaderSection";
 import MainSection from "./components/main/MainSection";
 import BottomSection from "./components/bottom/BottomSection";
 
 function App() {
   return (
     <>
-      <Header />
+      <HeaderSection />
       <MainSection />;
       <BottomSection />
     </>

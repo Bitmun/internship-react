@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles.css";
 
-function Block({ title, desc, img }) {
+function Block({ item }) {
+  const { title, desc, img } = item;
   return (
     <div className="block-container">
       <article className="block-wrapper">
@@ -20,8 +21,6 @@ function Block({ title, desc, img }) {
 }
 
 Block.propTypes = {
-  title: String.isRequired,
-  desc: String.isRequired,
-  img: String.isRequired,
+  item: Object.isRequired,
 };
 export default Block;

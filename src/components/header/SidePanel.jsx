@@ -1,29 +1,25 @@
 import React from "react";
 import { HEADER_ITEMS } from "../../data/data";
+import SidePanelElement from "./SidePanelElement";
 
-function SidePanel() {
-  const sidePanel = document.getElementById("side-panel");
-
-  const openSidePanel = () => {
-    sidePanel.classList.toggle("sidepanel-opened");
-  };
+function SidePanel({ isToggled, toggleClass }) {
+  const isOpened = isToggled ? "sidepanel-opened" : "";
+  const classes = `sidepanel ${isOpened}`;
   return (
-    <ul id="side-panel" className="sidepanel">
-      <a className="closebtn" id="closebtn" href="###" onClick={openSidePanel}>
+    <ul id="side-panel" className={classes}>
+      <a className="closebtn" id="closebtn" href="###" onClick={toggleClass}>
         &times;
       </a>
       {HEADER_ITEMS.map((item) => (
-        <li className="sidepanel-top" key={item.text}>
-          <a href="###">{item.text}</a>
-          <ul className="is-closed">
-            {item.submenu.map((el) => (
-              <li>{el.submenu}</li>
-            ))}
-          </ul>
-        </li>
+        <SidePanelElement item={item} />
       ))}
     </ul>
   );
 }
+
+SidePanel.propTypes = {
+  isToggled: Boolean.isRequired,
+  toggleClass: Function.isRequired,
+};
 
 export default SidePanel;
