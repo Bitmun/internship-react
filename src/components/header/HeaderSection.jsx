@@ -13,14 +13,12 @@ function HeaderSection() {
   };
 
   return (
-    <header className="header-container">
-      <div className="header-wrapper">
-        <div className="header">
-          <SidePanel isToggled={isToggled} toggleClass={toggleClass} />
-          <img alt="logo" src={logo} />
-          <NavigationPanel />
-          <BurgerIcon toggleClass={toggleClass} />
-        </div>
+    <header className="header-wrapper">
+      <div className="header">
+        <SidePanel isToggled={isToggled} toggleClass={toggleClass} />
+        <img alt="logo" src={logo} />
+        <NavigationPanel />
+        <BurgerIcon toggleClass={toggleClass} />
       </div>
     </header>
   );
