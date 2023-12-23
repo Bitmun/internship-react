@@ -6,11 +6,11 @@ export function debounce(func, wait) {
   };
 }
 
-export const fetchItemsAndSet = (itemsList, query, setFunc) => {
+export const filterItems = (itemsList, query) => {
   const filteredItems = itemsList.filter(
     (item) =>
       item.title.toLowerCase().includes(query) ||
       item.desc.toLowerCase().includes(query),
   );
-  setFunc(filteredItems);
+  return filteredItems;
 };

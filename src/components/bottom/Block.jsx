@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles.css";
+import "./bottom.css";
 import PropTypes from "prop-types";
 
 function Block({ item }) {

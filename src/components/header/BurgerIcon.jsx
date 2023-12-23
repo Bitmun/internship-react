@@ -1,15 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles.css";
+import "./header.css";
 
 function BurgerIcon({ toggleClass }) {
-  const handleKeyDown = () => {};
-
   return (
-    <div
-      role="button"
-      tabIndex="0"
-      onKeyDown={handleKeyDown}
+    <button
+      type="button"
       className="burger-icon"
       id="burger-icon"
       onClick={toggleClass}
@@ -18,7 +14,7 @@ function BurgerIcon({ toggleClass }) {
       <div className="line" />
       <div className="line" />
       <div className="line" />
-    </div>
+    </button>
   );
 }
 

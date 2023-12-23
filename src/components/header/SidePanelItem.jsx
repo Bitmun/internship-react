@@ -1,28 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function SidePanelElement({ item }) {
+function SidePanelItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleKeyDown = () => {};
-
   return (
     <>
-      <div
-        role="button"
-        tabIndex="0"
+      <button
+        type="button"
         className={`sidepanel-top ${isOpen ? "active" : "unactive"}`}
         onClick={handleClick}
-        onKeyDown={handleKeyDown}
       >
         <a href="###" className={isOpen ? "active" : "unactive"}>
           {item.text}
         </a>
-      </div>
+      </button>
       <ul className={`is-closed ${isOpen ? "is-opened" : ""}`}>
         {item.submenu.map((el) => (
           <li key={el}>{el}</li>
@@ -32,11 +28,11 @@ function SidePanelElement({ item }) {
   );
 }
 
-SidePanelElement.propTypes = {
+SidePanelItem.propTypes = {
   item: PropTypes.shape({
     text: PropTypes.string,
     submenu: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
 
-export default SidePanelElement;
+export default SidePanelItem;

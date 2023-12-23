@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import classNames from "classnames";
 import Block from "./Block";
 
 function BlocksSection({ itemsList }) {
-  const classes =
-    itemsList.length === 0 ? "blocks-section is-empty" : "blocks-section";
+  const divClass = classNames("blocks-section", {
+    "is-empty": itemsList.length === 0,
+  });
   return (
-    <div className={classes}>
+    <div className={divClass}>
       {(itemsList.length === 0 && <div>No such thing...</div>) || (
         <>
           {itemsList.map((item) => (

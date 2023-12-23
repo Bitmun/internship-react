@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { HEADER_ITEMS } from "../../data/data";
-
-import SidePanelElement from "./SidePanelElement";
+import SidePanelItem from "./SidePanelItem";
 
 function SidePanel({ isToggled, toggleClass }) {
-  const isOpened = isToggled ? "sidepanel-opened" : "";
-
-  const classes = `sidepanel ${isOpened}`;
-
+  const ulClass = classNames("sidepanel", {
+    "sidepanel-opened": isToggled,
+  });
   return (
-    <ul id="side-panel" className={classes}>
+    <ul id="side-panel" className={ulClass}>
       <a className="closebtn" id="closebtn" href="###" onClick={toggleClass}>
         &times;
       </a>
       {HEADER_ITEMS.map((item) => (
-        <SidePanelElement key={item.text} item={item} />
+        <SidePanelItem key={`${item.text}`} item={item} />
       ))}
     </ul>
   );
