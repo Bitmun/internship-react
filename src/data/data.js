@@ -65,3 +65,8 @@ export const SEARCH_ITEM_LIST = [
     img: "https://spring.io/img/projects/spring-security.svg",
   },
 ];
+
+export const AUTH_DATA = {
+  username: "admin",
+  password: "1234",
+};

@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles.css";
 import { HEADER_ITEMS } from "../../data/data";
 import NavigationMenuItem from "./NavigationMenuItem";
 

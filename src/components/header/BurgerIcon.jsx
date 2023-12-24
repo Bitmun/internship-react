@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./header.css";
 
 function BurgerIcon({ toggleClass }) {
   return (

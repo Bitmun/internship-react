@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SidePanel from "./SidePanel";
 import NavigationPanel from "./NavigationPanel";
 import BurgerIcon from "./BurgerIcon";
-import "../styles.css";
+import "./header.css";
 import logo from "../../images/spring-logo.png";
 
 function HeaderSection() {

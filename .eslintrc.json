@@ -12,10 +12,5 @@
   "rules": {
     "prettier/prettier": "error"
   },
-  "ignorePatterns": [
-    "package.json",
-    "package-lock.json",
-    ".eslintrc.json",
-    "styles.css"
-  ]
+  "ignorePatterns": ["*.json", "*.css"]
 }
