@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { AUTH_DATA } from "../../data/data";
 import "./login.css";
 import { logIn } from "../../features/auth/authSlice";
+import store from "../../store/store";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onButtonClick = () => {
@@ -26,7 +25,7 @@ function Login() {
       setPasswordError("Enter correct password");
       return;
     }
-    dispatch(logIn());
+    store.dispatch(logIn());
 
     navigate("/");
   };

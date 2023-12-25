@@ -1,20 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+const LOGIN = "auth/LOGIN";
+
+export const logIn = () => ({
+  type: LOGIN,
+});
 
 const initialState = {
   isAuthorized: false,
 };
 
-const authSlice = createSlice({
-  name: "auth",
-  initialState,
-  reducers: {
-    logIn: (state) => ({
-      ...state,
-      isAuthorized: true,
-    }),
-  },
-});
+// eslint-disable-next-line default-param-last
+const authRedicer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOGIN:
+      return {
+        ...state,
+        isAuthorized: true,
+      };
+    default:
+      return state;
+  }
+};
 
-export const { logIn } = authSlice.actions;
-
-export default authSlice.reducer;
+export default authRedicer;
