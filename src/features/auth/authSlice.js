@@ -9,7 +9,7 @@ const initialState = {
 };
 
 // eslint-disable-next-line default-param-last
-const authRedicer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
       return {
@@ -21,4 +21,4 @@ const authRedicer = (state = initialState, action) => {
   }
 };
 
-export default authRedicer;
+export default authReducer;
