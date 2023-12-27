@@ -1,17 +1,13 @@
+import React from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import store from "../store/store";
 
 function ProtectedRoute({ children }) {
-  const navigate = useNavigate();
   const state = store.getState();
-  useEffect(() => {
-    if (!state.isAuthorized) {
-      navigate("/login");
-    }
-  }, []);
-
+  if (!state.isAuthorized) {
+    return <Navigate to="/login" />;
+  }
   return children;
 }
 
