@@ -44,9 +44,6 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           id="passwordInput"
         />
-        <label className="error-label" htmlFor="passwordInput">
-          {credentialError}
-        </label>
       </div>
       <div className="input-container">
         <button
@@ -59,6 +56,9 @@ function Login() {
         >
           Log in
         </button>
+        <label className="error-label" htmlFor="passwordInput">
+          {credentialError}
+        </label>
       </div>
     </div>
   );
