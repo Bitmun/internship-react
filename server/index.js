@@ -19,3 +19,7 @@ app.listen(PORT, () => {
 const authRouter = require("./routes/Auth");
 
 app.use("/auth", authRouter);
+
+const itemsRouter = require("./routes/Items");
+
+app.use("/items", itemsRouter);
