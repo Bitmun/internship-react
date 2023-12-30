@@ -1,33 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AUTH_DATA } from "../../data/data";
 import "./login.css";
-import { logIn } from "../../features/auth/authSlice";
-import store from "../../store/store";
+import { logInUser } from "../../features/auth/reducers/logInUser";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [usernameError, setUsernameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [credentialError, setCredentialError] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onButtonClick = () => {
-    setUsernameError("");
-    setPasswordError("");
-
-    if (username !== AUTH_DATA.username) {
-      setUsernameError("Enter correct username");
-      return;
+  const onButtonClick = async () => {
+    setCredentialError("");
+    const data = { username, password };
+    const res = await dispatch(logInUser(data));
+    if (res.payload) {
+      navigate("/");
     }
-
-    if (password !== AUTH_DATA.password) {
-      setPasswordError("Enter correct password");
-      return;
-    }
-    store.dispatch(logIn());
-
-    navigate("/");
+    setCredentialError("Check username or password");
   };
 
   return (
@@ -41,10 +32,8 @@ function Login() {
           className="input-box"
           onChange={(e) => setUsername(e.target.value)}
           id="usernameInput"
+          aria-label="username"
         />
-        <label className="error-label" htmlFor="usernameInput">
-          {usernameError}
-        </label>
       </div>
       <div className="input-container">
         <input
@@ -56,16 +45,20 @@ function Login() {
           id="passwordInput"
         />
         <label className="error-label" htmlFor="passwordInput">
-          {passwordError}
+          {credentialError}
         </label>
       </div>
       <div className="input-container">
-        <input
+        <button
+          type="submit"
           className="input-button"
-          type="button"
           onClick={onButtonClick}
           value="Log in"
-        />
+          id="submitButton"
+          aria-label="Submit"
+        >
+          Log in
+        </button>
       </div>
     </div>
   );

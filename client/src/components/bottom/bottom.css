@@ -15,13 +15,6 @@
   justify-content: center;
 }
 
-.is-empty {
-  display: flex;
-  font-size: xx-large;
-  justify-content: center;
-  align-items: center;
-}
-
 .blocks-section {
   background-color: #ebf2f2;
   padding-top: 1rem;
@@ -98,4 +91,11 @@
   .blocks-section {
     max-width: 1000px;
   }
+}
+
+.is-empty {
+  display: flex;
+  font-size: xx-large;
+  justify-content: center;
+  align-items: center;
 }
