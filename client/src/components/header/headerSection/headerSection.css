@@ -1,0 +1,37 @@
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  padding-right: 5px;
+  width: 100%;
+  top: 0;
+  border-bottom: 0.5px solid #ebf2f2;
+  background-color: white;
+  z-index: 100;
+}
+
+@media screen and (min-width: 900px) {
+
+  .header {
+    position: relative;
+    height: 5rem;
+    border-bottom: 0;
+  }
+
+  .header-wrapper {
+    width: 100vw;
+    max-width: 1200px;
+  }
+
+  .header img {
+    padding-right: 4rem;
+  }
+}

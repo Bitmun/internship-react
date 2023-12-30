@@ -15,7 +15,6 @@ const getLogInResponse = async (credentials) => {
     throw new Error(errorData.msg || "Ok error");
   }
 
-  // eslint-disable-next-line no-return-await
   const data = await response.json();
   return data;
 };

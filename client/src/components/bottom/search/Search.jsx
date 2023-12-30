@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./search.css";
 
 function Search({ handleSearch }) {
   return (

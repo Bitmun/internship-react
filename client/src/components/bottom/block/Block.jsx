@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./block.css";
 
 function Block({ item }) {
   const { title, desc, img } = item;
   return (
     <div className="block-container">
-      <article className="block-wrapper">
+      <article>
         <a className="block" href="###">
           <div className="image-container">
             <img src={img} alt="img" />

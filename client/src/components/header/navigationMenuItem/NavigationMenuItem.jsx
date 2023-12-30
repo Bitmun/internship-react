@@ -1,6 +1,7 @@
 import React from "react";
 import { shape, string, arrayOf } from "prop-types";
-import SubMenuItem from "./SubMenuItem";
+import "./navigationMenuItem.css";
+import SubMenuItem from "../subMenuItem/SubMenuItem";
 
 function NavigationMenuItem({ item }) {
   return (

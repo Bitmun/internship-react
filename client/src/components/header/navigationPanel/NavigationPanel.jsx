@@ -1,6 +1,7 @@
 import React from "react";
-import { HEADER_ITEMS } from "../../data/data";
-import NavigationMenuItem from "./NavigationMenuItem";
+import { HEADER_ITEMS } from "../../../data/data";
+import NavigationMenuItem from "../navigationMenuItem/NavigationMenuItem";
+import "./navigationPanel.css";
 
 function NavigationPanel() {
   return (

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "./sidePanelItem.css";
 
 function SidePanelItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);

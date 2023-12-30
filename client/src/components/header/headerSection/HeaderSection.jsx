@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import SidePanel from "./SidePanel";
-import NavigationPanel from "./NavigationPanel";
-import BurgerIcon from "./BurgerIcon";
-import "./header.css";
-import logo from "../../images/spring-logo.png";
+import SidePanel from "../sidePanel/SidePanel";
+import NavigationPanel from "../navigationPanel/NavigationPanel";
+import BurgerIcon from "../burgerIcon/BurgerIcon";
+import "./headerSection.css";
+import logo from "../../../images/spring-logo.png";
 
 function HeaderSection() {
   const [isToggled, setIsToggled] = useState(false);

@@ -1,7 +1,7 @@
 import React from "react";
-import HeaderSection from "../../components/header/HeaderSection";
+import HeaderSection from "../../components/header/headerSection/HeaderSection";
 import MainSection from "../../components/main/MainSection";
-import BottomSection from "../../components/bottom/BottomSection";
+import BottomSection from "../../components/bottom/bottomSection/BottomSection";
 
 function MainPage() {
   return (

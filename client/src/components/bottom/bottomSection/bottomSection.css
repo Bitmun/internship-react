@@ -1,0 +1,26 @@
+.blocks-wrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #ebf2f2;
+  flex: 1;
+}
+
+.loader {
+  display: flex;
+  font-size: xx-large;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media screen and (min-width: 800px) {
+  .blocks-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    background-color: #ebf2f2;
+  }
+
+}

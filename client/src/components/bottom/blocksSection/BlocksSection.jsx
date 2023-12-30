@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Block from "./Block";
+import Block from "../block/Block";
+import "./blocksSection.css";
 
 function BlocksSection({ itemsList }) {
   const divClass = classNames("blocks-section", {
