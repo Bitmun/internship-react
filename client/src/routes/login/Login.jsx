@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { logInUser } from "../../features/auth/reducers/logInUser";
+// import { logIn } from "../../features/auth/authSlice";
 
 function Login() {
   const [username, setUsername] = useState("");

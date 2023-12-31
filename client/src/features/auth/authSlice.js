@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logInUser } from "./reducers/logInUser";
 
 const initialState = {
   isAuthorized: false,
@@ -13,8 +14,19 @@ const authSlice = createSlice({
       isAuthorized: true,
     }),
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(logInUser.fulfilled, (state) => ({
+        ...state,
+        isAuthorized: true,
+      }))
+      .addCase(logInUser.rejected, (state) => ({
+        ...state,
+        isAuthorized: false,
+      }));
+  },
 });
 
-export const { logIn } = authSlice.actions;
+export const authReducer = authSlice.reducer;
 
-export default authSlice.reducer;
+export const { logIn } = authSlice.actions;
