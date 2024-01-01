@@ -5,18 +5,24 @@ import Block from "../block/Block";
 import "./blocksSection.css";
 
 function BlocksSection({ itemsList }) {
+  const isEmpty = itemsList.length === 0;
   const divClass = classNames("blocks-section", {
-    "is-empty": itemsList.length === 0,
+    "is-empty": isEmpty,
   });
+
+  if (isEmpty) {
+    return (
+      <div className={divClass}>
+        <div>No such thing...</div>
+      </div>
+    );
+  }
+
   return (
     <div className={divClass}>
-      {(itemsList.length === 0 && <div>No such thing...</div>) || (
-        <>
-          {itemsList.map((item) => (
-            <Block item={item} key={item.title} />
-          ))}
-        </>
-      )}
+      {itemsList.map((item) => (
+        <Block item={item} key={item.title} />
+      ))}
     </div>
   );
 }

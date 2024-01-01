@@ -54,3 +54,7 @@
     width: 100%;
   }
 }
+
+.is-loading {
+  background-color: gray;
+}

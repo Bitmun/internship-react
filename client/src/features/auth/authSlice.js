@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { logInUser } from "./reducers/logInUser";
 
 const initialState = {
-  isAuthorized: false,
+  isAuthorized: null,
 };
 
 const authSlice = createSlice({

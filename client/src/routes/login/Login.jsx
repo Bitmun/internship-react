@@ -1,25 +1,38 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import classNames from "classnames";
 import "./login.css";
 import { logInUser } from "../../features/auth/reducers/logInUser";
-// import { logIn } from "../../features/auth/authSlice";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [credentialError, setCredentialError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const buttonClass = classNames("input-button", {
+    "is-loading": isLoading,
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onButtonClick = async () => {
+    setIsLoading(true);
     setCredentialError("");
     const data = { username, password };
     const res = await dispatch(logInUser(data));
+
     if (res.payload) {
       navigate("/");
+      return;
     }
-    setCredentialError("Check username or password");
+
+    if (res.error.message === "TypeError: Failed to fetch") {
+      setCredentialError("Check connection");
+    } else {
+      setCredentialError("Check username and password");
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -49,11 +62,12 @@ function Login() {
       <div className="input-container">
         <button
           type="submit"
-          className="input-button"
+          className={buttonClass}
           onClick={onButtonClick}
           value="Log in"
           id="submitButton"
           aria-label="Submit"
+          disabled={isLoading}
         >
           Log in
         </button>
