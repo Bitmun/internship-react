@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "jest && lint-staged",
     "eject": "react-scripts eject",
     "prepare": "cd .. && husky install"
   },
