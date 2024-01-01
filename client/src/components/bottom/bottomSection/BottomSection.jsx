@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Search from "../search/Search";
-import BlocksSection from "../blocksSection/BlocksSection";
+import { Search } from "../search/Search";
+import { BlocksSection } from "../blocksSection/BlocksSection";
 import { debounce, filterItems } from "../../../utils/search";
 import "./bottomSection.css";
 
-function BottomSection() {
+export function BottomSection() {
   const [itemsList, setItemsList] = useState();
   const [filteredItems, setFilteredItems] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -41,5 +41,3 @@ function BottomSection() {
     </div>
   );
 }
-
-export default BottomSection;

@@ -1,7 +1,7 @@
 import React from "react";
 import "./main.css";
 
-function MainSection() {
+export function MainSection() {
   return (
     <main className="main-wrapper">
       <article className="main">
@@ -16,5 +16,3 @@ function MainSection() {
     </main>
   );
 }
-
-export default MainSection;

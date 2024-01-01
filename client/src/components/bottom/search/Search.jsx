@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./search.css";
 
-function Search({ handleSearch }) {
+export function Search({ handleSearch }) {
   return (
     <form className="search-form">
       <input
@@ -21,5 +21,3 @@ function Search({ handleSearch }) {
 Search.propTypes = {
   handleSearch: PropTypes.func.isRequired,
 };
-
-export default Search;

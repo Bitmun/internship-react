@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { HEADER_ITEMS } from "../../../data/data";
-import SidePanelItem from "../sidePanelItem/SidePanelItem";
+import { SidePanelItem } from "../sidePanelItem/SidePanelItem";
 import "./sidePanel.css";
 
-function SidePanel({ isToggled, toggleClass }) {
+export function SidePanel({ isToggled, toggleClass }) {
   const ulClass = classNames("sidepanel", {
     "sidepanel-opened": isToggled,
   });
@@ -25,5 +25,3 @@ SidePanel.propTypes = {
   isToggled: PropTypes.bool.isRequired,
   toggleClass: PropTypes.func.isRequired,
 };
-
-export default SidePanel;

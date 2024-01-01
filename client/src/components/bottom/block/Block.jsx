@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./block.css";
 
-function Block({ item }) {
+export function Block({ item }) {
   const { title, desc, img } = item;
   return (
     <div className="block-container">
@@ -28,4 +28,3 @@ Block.propTypes = {
     img: PropTypes.string,
   }).isRequired,
 };
-export default Block;

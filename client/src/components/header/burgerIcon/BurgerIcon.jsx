@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./burgerIcon.css";
 
-function BurgerIcon({ toggleClass }) {
+export function BurgerIcon({ toggleClass }) {
   return (
     <button
       type="button"
@@ -21,5 +21,3 @@ function BurgerIcon({ toggleClass }) {
 BurgerIcon.propTypes = {
   toggleClass: PropTypes.func.isRequired,
 };
-
-export default BurgerIcon;

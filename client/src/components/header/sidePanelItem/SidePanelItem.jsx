@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./sidePanelItem.css";
 
-function SidePanelItem({ item }) {
+export function SidePanelItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -16,9 +16,7 @@ function SidePanelItem({ item }) {
         className={`sidepanel-top ${isOpen ? "active" : "unactive"}`}
         onClick={handleClick}
       >
-        <a href="###" className={isOpen ? "active" : "unactive"}>
-          {item.text}
-        </a>
+        {item.text}
       </button>
       <ul className={`is-closed ${isOpen ? "is-opened" : ""}`}>
         {item.submenu.map((el) => (
@@ -35,5 +33,3 @@ SidePanelItem.propTypes = {
     submenu: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };
-
-export default SidePanelItem;

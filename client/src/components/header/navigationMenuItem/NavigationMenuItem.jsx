@@ -1,9 +1,9 @@
 import React from "react";
 import { shape, string, arrayOf } from "prop-types";
 import "./navigationMenuItem.css";
-import SubMenuItem from "../subMenuItem/SubMenuItem";
+import { SubMenuItem } from "../subMenuItem/SubMenuItem";
 
-function NavigationMenuItem({ item }) {
+export function NavigationMenuItem({ item }) {
   return (
     <li className="dropdown">
       <a className="dropdown-link" href="###">
@@ -24,5 +24,3 @@ NavigationMenuItem.propTypes = {
     submenu: arrayOf(string),
   }).isRequired,
 };
-
-export default NavigationMenuItem;

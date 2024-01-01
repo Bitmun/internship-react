@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Block from "../block/Block";
+import { Block } from "../block/Block";
 import "./blocksSection.css";
 
-function BlocksSection({ itemsList }) {
+export function BlocksSection({ itemsList }) {
   const isEmpty = itemsList.length === 0;
   const divClass = classNames("blocks-section", {
     "is-empty": isEmpty,
@@ -36,5 +36,3 @@ BlocksSection.propTypes = {
     }),
   ).isRequired,
 };
-
-export default BlocksSection;

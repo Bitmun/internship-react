@@ -1,9 +1,10 @@
 import React from "react";
-import HeaderSection from "../../components/header/headerSection/HeaderSection";
-import MainSection from "../../components/main/MainSection";
-import BottomSection from "../../components/bottom/bottomSection/BottomSection";
+import "./mainPage.css";
+import { HeaderSection } from "../../components/header/headerSection/HeaderSection";
+import { MainSection } from "../../components/main/MainSection";
+import { BottomSection } from "../../components/bottom/bottomSection/BottomSection";
 
-function MainPage() {
+export function MainPage() {
   return (
     <div className="wrapper">
       <HeaderSection />
@@ -12,5 +13,3 @@ function MainPage() {
     </div>
   );
 }
-
-export default MainPage;

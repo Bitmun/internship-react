@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import SidePanel from "../sidePanel/SidePanel";
-import NavigationPanel from "../navigationPanel/NavigationPanel";
-import BurgerIcon from "../burgerIcon/BurgerIcon";
+import { SidePanel } from "../sidePanel/SidePanel";
+import { NavigationPanel } from "../navigationPanel/NavigationPanel";
+import { BurgerIcon } from "../burgerIcon/BurgerIcon";
 import "./headerSection.css";
 import logo from "../../../images/spring-logo.png";
 
-function HeaderSection() {
+export function HeaderSection() {
   const [isToggled, setIsToggled] = useState(false);
 
   const toggleClass = () => {
@@ -23,5 +23,3 @@ function HeaderSection() {
     </header>
   );
 }
-
-export default HeaderSection;

@@ -9,8 +9,6 @@ export const getLogInResponse = async (credentials) => {
     body: JSON.stringify(credentials),
   });
 
-  console.log(response);
-
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.msg || "Response error");
@@ -25,9 +23,9 @@ export const logInUser = createAsyncThunk("auth/logIn", async (credentials) => {
     const data = await getLogInResponse(credentials);
     return data;
   } catch (e) {
-    if (e instanceof TypeError && e.message === "Failed to fetch") {
-      console.log("Network error occurred");
-    }
+    // if (e instanceof TypeError && e.message === "Failed to fetch") {
+    //   console.log("Network error occurred");
+    // }
     throw new Error(e);
   }
 });

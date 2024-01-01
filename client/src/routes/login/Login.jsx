@@ -5,7 +5,7 @@ import classNames from "classnames";
 import "./login.css";
 import { logInUser } from "../../features/auth/reducers/logInUser";
 
-function Login() {
+export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [credentialError, setCredentialError] = useState("");
@@ -20,6 +20,7 @@ function Login() {
     setIsLoading(true);
     setCredentialError("");
     const data = { username, password };
+
     const res = await dispatch(logInUser(data));
 
     if (res.payload) {
@@ -78,5 +79,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

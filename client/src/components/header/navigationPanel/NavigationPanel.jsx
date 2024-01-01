@@ -1,9 +1,9 @@
 import React from "react";
 import { HEADER_ITEMS } from "../../../data/data";
-import NavigationMenuItem from "../navigationMenuItem/NavigationMenuItem";
+import { NavigationMenuItem } from "../navigationMenuItem/NavigationMenuItem";
 import "./navigationPanel.css";
 
-function NavigationPanel() {
+export function NavigationPanel() {
   return (
     <nav className="navigation">
       <ul className="navigation-ul" id="navigation-ul">
@@ -14,5 +14,3 @@ function NavigationPanel() {
     </nav>
   );
 }
-
-export default NavigationPanel;

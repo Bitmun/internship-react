@@ -1,7 +1,7 @@
 import React from "react";
 import { string } from "prop-types";
 
-function SubMenuItem({ element }) {
+export function SubMenuItem({ element }) {
   return (
     <li>
       <p>{element}</p>
@@ -12,5 +12,3 @@ function SubMenuItem({ element }) {
 SubMenuItem.propTypes = {
   element: string.isRequired,
 };
-
-export default SubMenuItem;
