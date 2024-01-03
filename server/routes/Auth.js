@@ -9,8 +9,9 @@ router.post("/signIn", async (req, res) => {
 
   const user = await Users.findOne({ where: { username } });
   if (!user) {
-    // TODO
+    res.status(400).json({ msg: "No user with such username" });
   }
+  //TODO
 });
 
 router.post("/signUp", async (req, res) => {
@@ -19,12 +20,13 @@ router.post("/signUp", async (req, res) => {
   const user = await Users.findOne({ where: { username } });
 
   if (user) {
-    // TODO
+    res.status(400).json({ msg: "User with such username already exists" });
   }
 
   const check = validateRegistration(req.body);
 
   if (check.length !== 0) {
+    // TODO
     res.status(400).json(JSON.stringify(check));
   }
 
