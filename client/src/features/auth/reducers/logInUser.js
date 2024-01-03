@@ -19,13 +19,6 @@ export const getLogInResponse = async (credentials) => {
 };
 
 export const logInUser = createAsyncThunk("auth/logIn", async (credentials) => {
-  try {
-    const data = await getLogInResponse(credentials);
-    return data;
-  } catch (e) {
-    // if (e instanceof TypeError && e.message === "Failed to fetch") {
-    //   console.log("Network error occurred");
-    // }
-    throw new Error(e);
-  }
+  const data = await getLogInResponse(credentials);
+  return data;
 });

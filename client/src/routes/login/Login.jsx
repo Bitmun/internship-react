@@ -28,7 +28,7 @@ export function Login() {
       return;
     }
 
-    if (res.error.message === "TypeError: Failed to fetch") {
+    if (res.error.message === "Failed to fetch") {
       setCredentialError("Check connection");
     } else {
       setCredentialError("Check username and password");
