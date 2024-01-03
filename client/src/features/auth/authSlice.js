@@ -9,7 +9,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logIn: (state) => ({
+    singIn: (state) => ({
       ...state,
       isAuthorized: true,
     }),
@@ -29,4 +29,4 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-export const { logIn } = authSlice.actions;
+export const { singIn } = authSlice.actions;
