@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "snvhzkjk",
+    "password": "XoFfCW77i9Ta61K6_BndcSpM9BiBA48W",
+    "database": "snvhzkjk",
+    "host": "rogue.db.elephantsql.com",
+    "dialect": "postgres"
+  }
+}
