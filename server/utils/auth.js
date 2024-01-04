@@ -41,7 +41,7 @@ const validateRegistration = ({
     errors.push("Last name must contain 3 symbols or more.");
   }
 
-  if (isNaN(age) || age <= 0) {
+  if (Number.isNaN(age) || age <= 0) {
     errors.push("Age must be a number and can't be zero.");
   }
 

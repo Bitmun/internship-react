@@ -1,11 +1,16 @@
 const express = require("express");
+
 const app = express();
+
 const cors = require("cors");
+
 const PORT = 5000;
+
 const db = require("./models");
+
 const corsOptions = {
   origin: "http://localhost:3000",
-  credentials: true, //access-control-allow-credentials:true
+  credentials: true,
   optionSuccessStatus: 200,
 };
 
