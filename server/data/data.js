@@ -36,7 +36,13 @@ const SEARCH_ITEM_LIST = [
   },
 ];
 
+const SECRET_KEY = "secret_key";
+
+const SECRET_KEY_2 = "secret_key_2";
+
 module.exports = {
   AUTH_DATA,
   SEARCH_ITEM_LIST,
+  SECRET_KEY,
+  SECRET_KEY_2,
 };

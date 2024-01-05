@@ -3,15 +3,17 @@ import { logInUser } from "./reducers/logInUser";
 
 const initialState = {
   isAuthorized: null,
+  username: null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    singIn: (state) => ({
+    singIn: (state, action) => ({
       ...state,
       isAuthorized: true,
+      username: action.payload,
     }),
   },
   extraReducers: (builder) => {

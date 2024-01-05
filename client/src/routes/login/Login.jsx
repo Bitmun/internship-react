@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import classNames from "classnames";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
+import { singIn } from "../../features/auth/authSlice";
 
 export function Login() {
   const [username, setUsername] = useState("");
@@ -12,6 +14,7 @@ export function Login() {
     "is-loading": isLoading,
   });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onButtonClick = async () => {
     setIsLoading(true);
@@ -22,6 +25,7 @@ export function Login() {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
     });
 
@@ -30,9 +34,10 @@ export function Login() {
     if (!response.ok) {
       const errorData = await response.json();
       setCredentialError(errorData.msg);
-      console.log(errorData);
       return;
     }
+
+    dispatch(singIn(username));
 
     navigate("/");
   };
@@ -88,9 +93,6 @@ export function Login() {
         >
           Don&apos;t have an account?
         </button>
-        <label className="error-label" htmlFor="passwordInput">
-          {credentialError}
-        </label>
       </div>
     </div>
   );

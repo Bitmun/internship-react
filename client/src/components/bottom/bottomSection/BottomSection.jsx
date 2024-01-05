@@ -19,7 +19,9 @@ export function BottomSection() {
   );
 
   useEffect(() => {
-    fetch("http://localhost:5000/items")
+    fetch("http://localhost:5000/items", {
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((result) => {
         setItemsList(result);

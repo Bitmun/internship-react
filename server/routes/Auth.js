@@ -4,6 +4,7 @@ const { validateRegistration, verifyPassword } = require("../utils/auth");
 
 const router = express.Router();
 const { Users } = require("../models");
+const { createToken } = require("../utils/JWT");
 
 router.post("/signIn", async (req, res) => {
   const { username, password } = req.body;
@@ -13,15 +14,32 @@ router.post("/signIn", async (req, res) => {
     res.status(400).json({ msg: "No user with such username" });
     return;
   }
+
   if (!verifyPassword(password, user.password, user.salt)) {
     res.status(400).json({ msg: "wrong password" });
     return;
   }
 
-  res.status(200).json({
-    msg: "logged in successfully",
-    user,
-  });
+  const accessToken = createToken(user);
+
+  const refreshToken = createToken(user);
+
+  res
+    .cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      sameSite: "strict",
+      maxAge: 86000,
+    })
+    .cookie("authorization", accessToken, {
+      httpOnly: true,
+      sameSite: "strict",
+      maxAge: 860000,
+    })
+    .status(200)
+    .json({
+      msg: "logged in successfully",
+      username,
+    });
 });
 
 router.post("/signUp", async (req, res) => {

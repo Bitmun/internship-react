@@ -6,6 +6,8 @@ const cors = require("cors");
 
 const PORT = 5000;
 
+const cookieParser = require("cookie-parser");
+
 const db = require("./models");
 
 const corsOptions = {
@@ -13,6 +15,8 @@ const corsOptions = {
   credentials: true,
   optionSuccessStatus: 200,
 };
+
+app.use(cookieParser());
 
 app.use(express.json());
 
