@@ -1,14 +1,15 @@
-/* eslint-disable dot-notation */
-/* eslint-disable prefer-destructuring */
 const jwt = require("jsonwebtoken");
 const { SECRET_KEY } = require("../data/data");
 
+// eslint-disable-next-line consistent-return
 const validateToken = (req, res, next) => {
-  let accessToken = req.cookies["authorization"];
-  const refreshToken = req.cookies["refreshToken"];
+  let accessToken = req.cookies.authorization;
+  const { refreshToken } = req.cookies;
 
   if (!accessToken && !refreshToken) {
-    return res.status(401).send("Access Denied. No token provided.");
+    return res
+      .status(401)
+      .json({ msg: "Access Denied. No token provided.", redirect: true });
   }
 
   try {
@@ -17,36 +18,37 @@ const validateToken = (req, res, next) => {
     next();
   } catch (error) {
     if (!refreshToken) {
-      return res.status(401).send("Access Denied. No refresh token provided.");
+      return res.status(401).json({
+        msg: "Access Denied. No refresh token provided.",
+        redirect: true,
+      });
     }
 
     try {
       const decoded = jwt.verify(refreshToken, SECRET_KEY);
-      accessToken = jwt.sign({ user: decoded.user }, SECRET_KEY, {
-        expiresIn: "1h",
+      accessToken = jwt.sign({ user: decoded.user }, SECRET_KEY);
+
+      res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        sameSite: "strict",
+        maxAge: 360000000,
+      });
+      res.cookie("authorization", accessToken, {
+        maxAge: 36000000,
+        httpOnly: true,
+        sameSite: "strict",
       });
 
-      res
-        .cookie("refreshToken", refreshToken, {
-          httpOnly: true,
-          sameSite: "strict",
-        })
-        .cookie("authorization", accessToken, {
-          maxAge: 10000,
-          httpOnly: true,
-          sameSite: "strict",
-        })
-        .send(decoded.user);
+      next();
     } catch (e) {
-      return res.status(400).send("Invalid Token.");
+      return res.status(400).json({ msg: "Invalid token", redirect: true });
     }
   }
-  return res.status(400).json({ msg: "some error" });
 };
 
 const createToken = (user) => {
-  const accessToken = jwt.sign({ user }, SECRET_KEY, { expiresIn: "1h" });
-  return accessToken;
+  const token = jwt.sign({ user }, SECRET_KEY);
+  return token;
 };
 
 module.exports = {

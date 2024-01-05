@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Search } from "../search/Search";
 import { BlocksSection } from "../blocksSection/BlocksSection";
 import { debounce, filterItems } from "../../../utils/search";
@@ -8,6 +9,7 @@ export function BottomSection() {
   const [itemsList, setItemsList] = useState();
   const [filteredItems, setFilteredItems] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
   const handleSearch = useCallback(
     debounce((inputVal) => {
       if (itemsList) {
@@ -24,6 +26,9 @@ export function BottomSection() {
     })
       .then((response) => response.json())
       .then((result) => {
+        if (result.redirect) {
+          navigate("/login");
+        }
         setItemsList(result);
         setFilteredItems(result);
         setIsLoading(false);

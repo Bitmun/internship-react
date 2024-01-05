@@ -28,12 +28,12 @@ router.post("/signIn", async (req, res) => {
     .cookie("refreshToken", refreshToken, {
       httpOnly: true,
       sameSite: "strict",
-      maxAge: 86000,
+      maxAge: 360000000,
     })
     .cookie("authorization", accessToken, {
       httpOnly: true,
       sameSite: "strict",
-      maxAge: 860000,
+      maxAge: 36000000,
     })
     .status(200)
     .json({
@@ -48,7 +48,7 @@ router.post("/signUp", async (req, res) => {
   const check = validateRegistration(req.body);
 
   if (check.length !== 0) {
-    res.status(200).json({ msg: "validation errors", errors: check });
+    res.status(400).json({ msg: "validation errors", errors: check });
     return;
   }
 
@@ -66,6 +66,7 @@ router.post("/signUp", async (req, res) => {
     .toString("hex");
 
   Users.create({ username, password: hash, firstName, lastName, age, salt });
+
   res.json("User registered");
 });
 

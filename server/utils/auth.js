@@ -18,31 +18,52 @@ const validateRegistration = ({
   const errors = [];
 
   if (username.length < 3) {
-    errors.push("Username must contain 3 symbols or more.");
+    errors.push({
+      msg: "Username must contain 3 symbols or more.",
+      type: "username",
+    });
   }
 
   if (!/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
-    errors.push("Password must contain at least 1 number and 1 letter.");
+    errors.push({
+      msg: "Password must contain at least 1 number and 1 letter.",
+      type: "password",
+    });
   }
 
   if (password.length < 4) {
-    errors.push("Password must contain 4 symbols or more.");
+    errors.push({
+      msg: "Password must contain 4 symbols or more.",
+      type: "password",
+    });
   }
 
   if (password !== repeatPassword) {
-    errors.push("Passwords should be the same.");
+    errors.push({
+      msg: "Passwords should be the same.",
+      type: "repeatPassword",
+    });
   }
 
   if (firstName.length < 3) {
-    errors.push("First name must contain 3 symbols or more.");
+    errors.push({
+      msg: "First name must contain 3 symbols or more.",
+      type: "firstName",
+    });
   }
 
   if (lastName.length < 3) {
-    errors.push("Last name must contain 3 symbols or more.");
+    errors.push({
+      msg: "Last name must contain 3 symbols or more.",
+      type: "lastName",
+    });
   }
 
   if (Number.isNaN(age) || age <= 0) {
-    errors.push("Age must be a number and can't be zero.");
+    errors.push({
+      msg: "Age must be a number and can't be zero.",
+      type: "age",
+    });
   }
 
   return errors;
