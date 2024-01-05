@@ -32,6 +32,7 @@ const validateToken = (req, res, next) => {
           sameSite: "strict",
         })
         .cookie("authorization", accessToken, {
+          maxAge: 10000,
           httpOnly: true,
           sameSite: "strict",
         })
