@@ -20,9 +20,9 @@ router.post("/signIn", async (req, res) => {
     return;
   }
 
-  const accessToken = createToken(user);
+  const accessToken = createToken(user.id);
 
-  const refreshToken = createToken(user);
+  const refreshToken = createToken(user.id);
 
   res
     .cookie("refreshToken", refreshToken, {
@@ -30,7 +30,7 @@ router.post("/signIn", async (req, res) => {
       sameSite: "strict",
       maxAge: 360000000,
     })
-    .cookie("authorization", accessToken, {
+    .cookie("accessToken", accessToken, {
       httpOnly: true,
       sameSite: "strict",
       maxAge: 36000000,
