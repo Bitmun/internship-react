@@ -3,11 +3,15 @@
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
-const process = require("process");
 
+const config = {
+  username: "snvhzkjk",
+  password: "XoFfCW77i9Ta61K6_BndcSpM9BiBA48W",
+  database: "snvhzkjk",
+  host: "rogue.db.elephantsql.com",
+  dialect: "postgres",
+};
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || "development";
-const config = require(`${__dirname}/../config/config.json`)[env];
 const db = {};
 
 const sequelize = new Sequelize(
