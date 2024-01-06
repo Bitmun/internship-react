@@ -20,9 +20,9 @@ router.post("/signIn", async (req, res) => {
     return;
   }
 
-  const accessToken = createToken(user.id);
+  const accessToken = createToken(user);
 
-  const refreshToken = createToken(user.id);
+  const refreshToken = createToken(user);
 
   res
     .cookie("refreshToken", refreshToken, {
@@ -42,20 +42,19 @@ router.post("/signIn", async (req, res) => {
     });
 });
 
+router.post("/signOut", (req, res) => {
+  res.clearCookie("accessToken");
+  res.clearCookie("refreshToken");
+  res.end();
+});
+
 router.post("/signUp", async (req, res) => {
   const { username, password, firstName, lastName, age } = req.body;
 
-  const check = validateRegistration(req.body);
+  const check = await validateRegistration(req.body);
 
   if (check.length !== 0) {
     res.status(400).json({ msg: "validation errors", errors: check });
-    return;
-  }
-
-  const user = await Users.findOne({ where: { username } });
-
-  if (user) {
-    res.status(400).json({ msg: "User with such username already exists" });
     return;
   }
 

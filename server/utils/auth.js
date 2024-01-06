@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+const { Users } = require("../models");
 
 const verifyPassword = (password, storedHash, storedSalt) => {
   const hash = crypto
@@ -7,7 +8,7 @@ const verifyPassword = (password, storedHash, storedSalt) => {
   return hash === storedHash;
 };
 
-const validateRegistration = ({
+const validateRegistration = async ({
   username,
   password,
   repeatPassword,
@@ -66,6 +67,14 @@ const validateRegistration = ({
     });
   }
 
+  const user = await Users.findOne({ where: { username } });
+
+  if (user) {
+    errors.push({
+      msg: "User with such username already exists",
+      type: "username",
+    });
+  }
   return errors;
 };
 

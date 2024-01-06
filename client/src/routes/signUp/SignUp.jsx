@@ -47,10 +47,10 @@ export function SignUp() {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
+      setIsLoading(false);
       const errorData = await response.json();
       const errorsArray = errorData.errors;
       for (let i = 0; i < errorsArray.length; i += 1) {
-        setIsLoading(false);
         const { msg } = errorsArray[i];
         switch (errorsArray[i].type) {
           case "username": {

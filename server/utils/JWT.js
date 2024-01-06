@@ -3,8 +3,7 @@ const { SECRET_KEY } = require("../data/data");
 
 // eslint-disable-next-line consistent-return
 const validateToken = (req, res, next) => {
-  let { accessToken } = req.cookies;
-  const { refreshToken } = req.cookies;
+  const { accessToken, refreshToken } = req.cookies;
 
   if (!accessToken && !refreshToken) {
     return res
@@ -26,23 +25,22 @@ const validateToken = (req, res, next) => {
 
     try {
       const decoded = jwt.verify(refreshToken, SECRET_KEY);
-      console.log(decoded);
-      accessToken = jwt.sign({ user: decoded.user }, SECRET_KEY);
+      const newAccessToken = jwt.sign({ user: decoded.user }, SECRET_KEY);
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         sameSite: "strict",
-        maxAge: 360000000,
-      });
-      res.cookie("accessToken", accessToken, {
         maxAge: 36000000,
+      });
+      res.cookie("accessToken", newAccessToken, {
+        maxAge: 360000,
         httpOnly: true,
         sameSite: "strict",
       });
 
       next();
     } catch (e) {
-      return res.status(400).json({ msg: "Invalid token", redirect: true });
+      return res.status(401).json({ msg: "Invalid token", redirect: true });
     }
   }
 };
