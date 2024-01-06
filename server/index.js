@@ -1,13 +1,11 @@
 const express = require("express");
 
 const app = express();
-
+const path = require("path");
 const cors = require("cors");
 
 const PORT = 5000;
-
 const cookieParser = require("cookie-parser");
-
 const db = require("./models");
 
 const corsOptions = {
@@ -21,6 +19,12 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors(corsOptions));
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 const authRouter = require("./routes/Auth");
 
