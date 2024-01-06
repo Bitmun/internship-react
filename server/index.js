@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const db = require("./models");
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://task5-2.onrender.com/",
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -35,8 +35,8 @@ const itemsRouter = require("./routes/Items");
 app.use("/items", itemsRouter);
 
 db.sequelize.sync().then(() => {
-  // console.log("db connected successfully");
+  console.log("db connected successfully");
   app.listen(PORT, () => {
-    // console.log(`server listening on port ${PORT}`);
+    console.log(`server listening on port ${PORT}`);
   });
 });

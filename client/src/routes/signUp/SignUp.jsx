@@ -38,14 +38,17 @@ export function SignUp() {
       lastName,
       age,
     };
-    const response = await fetch("http://localhost:5000/auth/signUp", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "https://task5-2-server.onrender.com/auth/signUp",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(data),
       },
-      credentials: "include",
-      body: JSON.stringify(data),
-    });
+    );
     if (!response.ok) {
       setIsLoading(false);
       const errorData = await response.json();
