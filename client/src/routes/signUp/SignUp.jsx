@@ -78,7 +78,7 @@ export function SignUp() {
             break;
           }
           default: {
-            console.log("some unknown error");
+            break;
           }
         }
       }

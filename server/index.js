@@ -35,8 +35,8 @@ const itemsRouter = require("./routes/Items");
 app.use("/items", itemsRouter);
 
 db.sequelize.sync().then(() => {
-  console.log("db connected successfully");
+  // console.log("db connected successfully");
   app.listen(PORT, () => {
-    console.log(`server listening on port ${PORT}`);
+    // console.log(`server listening on port ${PORT}`);
   });
 });
