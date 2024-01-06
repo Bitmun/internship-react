@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 export function MainSection() {
   const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+  };
   const handleLogOut = async () => {
     fetch("http://localhost:5000/auth/signOut", {
       method: "POST",
@@ -20,6 +23,9 @@ export function MainSection() {
       <article className="main">
         <button type="button" onClick={handleLogOut}>
           Sign Out
+        </button>
+        <button type="button" onClick={handleClick}>
+          go to login
         </button>
         <h1>Projects</h1>
         <span className="description">
