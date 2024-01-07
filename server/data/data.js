@@ -31,8 +31,10 @@
 //   },
 // ];
 
-const SECRET_KEY = "secret_key";
+const ACCESS_SECRET_KEY = "access_secret_key";
+const REFRESH_SECRET_KEY = "refresh_secret_key";
 
 module.exports = {
-  SECRET_KEY,
+  ACCESS_SECRET_KEY,
+  REFRESH_SECRET_KEY,
 };

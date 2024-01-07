@@ -4,7 +4,7 @@ const { validateRegistration, verifyPassword } = require("../utils/auth");
 
 const router = express.Router();
 const { Users } = require("../models");
-const { createToken } = require("../utils/JWT");
+const { createAccessToken, createRefreshToken } = require("../utils/JWT");
 
 router.post("/signIn", async (req, res) => {
   const { username, password } = req.body;
@@ -20,9 +20,9 @@ router.post("/signIn", async (req, res) => {
     return;
   }
 
-  const accessToken = createToken(user);
+  const accessToken = createAccessToken(user);
 
-  const refreshToken = createToken(user);
+  const refreshToken = createRefreshToken(user);
 
   res
     .cookie("refreshToken", refreshToken, {

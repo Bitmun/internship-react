@@ -20,17 +20,14 @@ export function Login() {
     setIsLoading(true);
     setCredentialError("");
     const data = { username, password };
-    const response = await fetch(
-      "https://task5-2-server.onrender.com/auth/signIn",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(data),
+    const response = await fetch("http://localhost:5000/auth/signIn", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      credentials: "include",
+      body: JSON.stringify(data),
+    });
 
     setIsLoading(false);
 

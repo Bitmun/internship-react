@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const db = require("./models");
 
 const corsOptions = {
-  origin: "https://task5-2.onrender.com",
+  origin: "http://localhost:3000",
   credentials: true,
   optionSuccessStatus: 200,
 };

@@ -21,7 +21,7 @@ export function BottomSection() {
   );
 
   useEffect(() => {
-    fetch("https://task5-2-server.onrender.com/items", {
+    fetch("http://localhost:5000/items", {
       credentials: "include",
     })
       .then((response) => response.json())
