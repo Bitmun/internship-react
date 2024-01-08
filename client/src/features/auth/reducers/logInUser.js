@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getLogInResponse = async (credentials) => {
-  const response = await fetch("http://localhost:5000/auth/login", {
+  const response = await fetch("http://localhost:5000/auth/singIn", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +18,10 @@ export const getLogInResponse = async (credentials) => {
   return data;
 };
 
-export const logInUser = createAsyncThunk("auth/logIn", async (credentials) => {
-  const data = await getLogInResponse(credentials);
-  return data;
-});
+export const logInUser = createAsyncThunk(
+  "auth/signIn",
+  async (credentials) => {
+    const data = await getLogInResponse(credentials);
+    return data;
+  },
+);

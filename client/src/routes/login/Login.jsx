@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import "./login.css";
-import { logInUser } from "../../features/auth/reducers/logInUser";
+import { useNavigate } from "react-router-dom";
+import { singIn } from "../../features/auth/authSlice";
 
 export function Login() {
   const [username, setUsername] = useState("");
@@ -13,27 +13,33 @@ export function Login() {
   const buttonClass = classNames("input-button", {
     "is-loading": isLoading,
   });
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onButtonClick = async () => {
     setIsLoading(true);
     setCredentialError("");
     const data = { username, password };
+    const response = await fetch("http://localhost:5000/auth/signIn", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(data),
+    });
 
-    const res = await dispatch(logInUser(data));
+    setIsLoading(false);
 
-    if (res.payload) {
-      navigate("/");
+    if (!response.ok) {
+      const errorData = await response.json();
+      setCredentialError(errorData.msg);
       return;
     }
 
-    if (res.error.message === "Failed to fetch") {
-      setCredentialError("Check connection");
-    } else {
-      setCredentialError("Check username and password");
-    }
-    setIsLoading(false);
+    dispatch(singIn(username));
+
+    navigate("/");
   };
 
   return (
@@ -75,6 +81,18 @@ export function Login() {
         <label className="error-label" htmlFor="passwordInput">
           {credentialError}
         </label>
+      </div>
+      <div className="input-container">
+        <button
+          type="button"
+          className={buttonClass}
+          onClick={() => navigate("/signUp")}
+          value="Don't have an account?"
+          id="signUp"
+          aria-label="redirect"
+        >
+          Don&apos;t have an account?
+        </button>
       </div>
     </div>
   );

@@ -1,10 +1,81 @@
-const { AUTH_DATA } = require("../data/data");
+const crypto = require("crypto");
+const { Users } = require("../models");
 
-const validateCredits = (username, password) => {
-  if (username === AUTH_DATA.username && password === AUTH_DATA.password) {
-    return true;
-  }
-  return false;
+const verifyPassword = (password, storedHash, storedSalt) => {
+  const hash = crypto
+    .pbkdf2Sync(password, storedSalt, 100000, 64, "sha512")
+    .toString("hex");
+  return hash === storedHash;
 };
 
-module.exports = validateCredits;
+const validateRegistration = async ({
+  username,
+  password,
+  repeatPassword,
+  firstName,
+  lastName,
+  age,
+}) => {
+  const errors = [];
+
+  if (username.length < 3) {
+    errors.push({
+      msg: "Username must contain 3 symbols or more.",
+      type: "username",
+    });
+  }
+
+  if (!/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
+    errors.push({
+      msg: "Password must contain at least 1 number and 1 letter.",
+      type: "password",
+    });
+  }
+
+  if (password.length < 4) {
+    errors.push({
+      msg: "Password must contain 4 symbols or more.",
+      type: "password",
+    });
+  }
+
+  if (password !== repeatPassword) {
+    errors.push({
+      msg: "Passwords should be the same.",
+      type: "repeatPassword",
+    });
+  }
+
+  if (firstName.length < 3) {
+    errors.push({
+      msg: "First name must contain 3 symbols or more.",
+      type: "firstName",
+    });
+  }
+
+  if (lastName.length < 3) {
+    errors.push({
+      msg: "Last name must contain 3 symbols or more.",
+      type: "lastName",
+    });
+  }
+
+  if (Number.isNaN(age) || age <= 0) {
+    errors.push({
+      msg: "Age must be a number and can't be zero.",
+      type: "age",
+    });
+  }
+
+  const user = await Users.findOne({ where: { username } });
+
+  if (user) {
+    errors.push({
+      msg: "User with such username already exists",
+      type: "username",
+    });
+  }
+  return errors;
+};
+
+module.exports = { verifyPassword, validateRegistration };

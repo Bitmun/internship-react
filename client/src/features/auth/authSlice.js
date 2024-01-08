@@ -3,15 +3,17 @@ import { logInUser } from "./reducers/logInUser";
 
 const initialState = {
   isAuthorized: null,
+  username: null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logIn: (state) => ({
+    singIn: (state, action) => ({
       ...state,
       isAuthorized: true,
+      username: action.payload,
     }),
   },
   extraReducers: (builder) => {
@@ -29,4 +31,4 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-export const { logIn } = authSlice.actions;
+export const { singIn } = authSlice.actions;
